@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -18,21 +17,25 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.founder}`,
+    default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
-    "business consulting",
-    "startup mentoring",
-    "corporate governance",
-    "business strategy",
-    "Jimmy Manalal James",
-    "Plantshop.me",
+    "Jimmy Manalel",
+    "Plantshop.ae",
+    "Founder-Being",
+    "venture ecosystem builder",
+    "cross-border strategist",
+    "India GCC",
+    "startup mentor",
     "500 Global",
-    "444 Dawn Club",
-    "Elevate444",
+    "founder wellbeing",
+    "e-commerce UAE",
+    "startup strategy",
+    "fundraising advisor",
   ],
   authors: [{ name: siteConfig.founder }],
   creator: siteConfig.founder,
@@ -59,22 +62,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteConfig.founder,
-  jobTitle: "Business Consultant & Mentor",
   url: siteConfig.url,
   email: siteConfig.email,
-  worksFor: {
-    "@type": "Organization",
-    name: siteConfig.name,
-    alternateName: siteConfig.alternateName,
-    description: siteConfig.description,
-  },
-  knowsAbout: [
-    "Business Strategy",
-    "Operations Excellence",
-    "Corporate Governance",
-    "Startup Mentoring",
-    "Fundraising",
-  ],
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -90,18 +80,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <Toaster richColors position="top-right" />
-        </ThemeProvider>
+      <body className={`${inter.variable} ${playfair.variable} antialiased bg-black text-white`}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );

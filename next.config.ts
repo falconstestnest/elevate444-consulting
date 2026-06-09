@@ -1,13 +1,9 @@
 import type { NextConfig } from "next";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: projectRoot,
-  },
+  // Silence workspace root warning (parent dir has another lockfile)
+  outputFileTracingRoot: process.cwd(),
+  // Add any production config here if needed (e.g. images, redirects)
 };
 
 export default nextConfig;

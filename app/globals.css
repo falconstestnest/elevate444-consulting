@@ -119,16 +119,61 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-0 outline-none;
   }
   html {
     scroll-behavior: smooth;
-    @apply font-sans;
   }
   body {
-    @apply bg-background text-foreground;
+    background: #000;
+    color: #fff;
+    font-family: var(--font-inter);
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, .serif {
     font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
+}
+
+/* SpaceX / Tesla inspired minimalism */
+.section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.quote {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.statement {
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+  line-height: 1.15;
+  font-weight: 400;
+  max-width: 42ch;
+}
+
+.nav-link {
+  transition: opacity 0.15s ease;
+}
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+.minimal-cta {
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.2s ease;
+}
+.minimal-cta:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* Remove old card and glass styles that feel CV-like */
+.glass, .card-hover {
+  all: unset;
 }

@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jimmy Manalel — Personal Website
 
-## Getting Started
+Modern, elegant portfolio and contact site for Jimmy Manalel: Founder, Venture Ecosystem Builder, and Cross-Border Startup Strategist (India ↔ GCC).
 
-First, run the development server:
+**Live site:** https://jimmy-manalel.vercel.app
+
+## Features
+- Highly interactive expertise grid (click cards for details + "select focus areas" builder)
+- Clickable personal journey timeline
+- Dedicated Founder-Being section with core belief quote
+- Fully functional contact form (with Resend email support)
+- Beautiful dark-first design with smooth animations (Framer Motion)
+- Responsive and production-optimized Next.js 15 + Tailwind
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Add / Update Portrait
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Replace `public/images/jimmy-headshot.jpg` with your professional photo (recommended ~4:5 portrait).
 
-## Learn More
+The site gracefully falls back if the image is missing.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This site is deployed on Vercel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx vercel --prod
+```
 
-## Deploy on Vercel
+## Contact Form (Production Emails)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The form works out of the box (success toast + server log).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For real email delivery, add these environment variables in the Vercel dashboard (Project → Settings → Environment Variables):
+
+- `RESEND_API_KEY` (required for sending)
+- `CONTACT_EMAIL` (optional, defaults to hello@jimmymanalel.com)
+- `RESEND_FROM_EMAIL` (optional)
+
+After adding vars, redeploy or trigger a new build.
+
+## Tech
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS + shadcn/ui primitives
+- Framer Motion (interactions & modals)
+- React Hook Form + Zod
+- Sonner (toasts)
+- Vercel (hosting + serverless API)
+
+## Customization
+
+Most content lives in `lib/constants.ts` (expertise, journey, stats, form options, site metadata).
+
+Sections are in `components/sections/`.
+
+## License
+
+Personal site. All rights reserved.

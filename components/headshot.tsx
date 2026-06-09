@@ -5,26 +5,28 @@ import { siteConfig } from "@/lib/constants";
 export function Headshot() {
   const src = getHeadshotPath();
 
-  if (src) {
-    return (
-      <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border-2 border-brand-gold shadow-2xl shadow-brand-green/20">
-        <Image
-          src={src}
-          alt={`${siteConfig.founder} — Founder, ${siteConfig.name}`}
-          fill
-          priority
-          sizes="(max-width: 768px) 100vw, 384px"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 to-transparent" />
-      </div>
-    );
-  }
-
   return (
-    <div className="relative mx-auto flex aspect-[4/5] w-full max-w-sm items-center justify-center overflow-hidden rounded-2xl border-2 border-brand-gold bg-gradient-to-br from-brand-green to-brand-navy shadow-2xl">
-      <span className="font-heading text-7xl font-bold text-brand-gold">JJ</span>
-      <p className="absolute bottom-6 text-sm text-white/60">Upload headshot to public/images/</p>
+    <div className="group relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-[#0F1626] shadow-2xl">
+      <Image
+        src={src}
+        alt={`${siteConfig.founder} — Founder • Venture Ecosystem Builder`}
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 384px"
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
+        onError={(e) => {
+          // Graceful fallback if photo not yet added
+          const target = e.currentTarget as HTMLImageElement;
+          target.style.display = "none";
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+      {/* Elegant overlay caption */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 text-white/90">
+        <div className="text-xs tracking-[2px] text-white/60">CO-FOUNDER, PLANTSHOP.AE</div>
+        <div className="mt-1 font-heading text-2xl tracking-[-0.5px]">Jimmy Manalel</div>
+      </div>
     </div>
   );
 }

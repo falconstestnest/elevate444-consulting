@@ -4,13 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Send } from "lucide-react";
 import { toast } from "sonner";
 import { serviceOptions } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -66,83 +61,61 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="name">Name *</Label>
-          <Input id="name" placeholder="Your name" {...register("name")} />
-          {errors.name && (
-            <p className="text-xs text-destructive">{errors.name.message}</p>
-          )}
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 text-white">
+      <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+        <div>
+          <input
+            id="name"
+            placeholder="Your name"
+            className="w-full border-b border-white/30 bg-transparent pb-3 text-lg placeholder:text-white/40 focus:border-white"
+            {...register("name")}
+          />
+          {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>}
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
-          <Input
+        <div>
+          <input
             id="email"
             type="email"
-            placeholder="you@company.com"
+            placeholder="Email address"
+            className="w-full border-b border-white/30 bg-transparent pb-3 text-lg placeholder:text-white/40 focus:border-white"
             {...register("email")}
           />
-          {errors.email && (
-            <p className="text-xs text-destructive">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="company">Company</Label>
-          <Input id="company" placeholder="Your company" {...register("company")} />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="service">Service Interest *</Label>
-          <select
-            id="service"
-            className="flex h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-            {...register("service")}
-          >
-            {serviceOptions.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-          {errors.service && (
-            <p className="text-xs text-destructive">{errors.service.message}</p>
-          )}
-        </div>
+      <div>
+        <select
+          id="service"
+          className="w-full border-b border-white/30 bg-transparent pb-3 text-lg text-white/80 focus:border-white"
+          {...register("service")}
+        >
+          {serviceOptions.map((s) => (
+            <option key={s} value={s} className="bg-black text-white">
+              {s}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="message">Message *</Label>
-        <Textarea
+      <div>
+        <textarea
           id="message"
-          placeholder="Tell me about your business and how I can help..."
-          rows={5}
+          placeholder="What are you building?"
+          rows={4}
+          className="w-full border-b border-white/30 bg-transparent pb-3 text-lg placeholder:text-white/40 focus:border-white"
           {...register("message")}
         />
-        {errors.message && (
-          <p className="text-xs text-destructive">{errors.message.message}</p>
-        )}
+        {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>}
       </div>
 
-      <Button
+      <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-brand-green text-white hover:bg-brand-green/90 sm:w-auto"
+        className="minimal-cta w-full rounded-full py-4 text-sm uppercase tracking-[2.5px] disabled:opacity-50"
       >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send />
-            Send Message
-          </>
-        )}
-      </Button>
+        {isSubmitting ? "Sending..." : "Send note"}
+      </button>
     </form>
   );
 }
