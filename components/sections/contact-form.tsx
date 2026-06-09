@@ -51,7 +51,9 @@ export function ContactForm() {
       }
 
       toast.success("Message sent!", {
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: result.emailed
+          ? "Thank you for reaching out. I'll get back to you soon."
+          : "Received (dev mode). Configure RESEND_API_KEY on Vercel for live email.",
       });
       reset();
     } catch (err) {
