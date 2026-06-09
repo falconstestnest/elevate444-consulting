@@ -13,13 +13,11 @@ export function CaseStudies() {
           description="Real ventures. Real challenges. Measurable outcomes."
         />
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
-          {caseStudies.map((study, index) => (
+        <div className="mx-auto mt-16 grid max-w-xl gap-8">
+          {caseStudies.map((study) => (
             <Card
               key={study.title}
-              className={`flex flex-col border-border/60 ${
-                index === 0 ? "border-brand-gold/40 lg:scale-[1.02]" : ""
-              }`}
+              className="flex flex-col border-brand-gold/40 border-border/60"
             >
               <CardHeader>
                 <Badge

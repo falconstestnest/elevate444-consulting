@@ -67,22 +67,6 @@ export const caseStudies = [
     highlights: ["Founded 2015", "COVID-scale survivor", "National operations"],
     tag: "Flagship Venture",
   },
-  {
-    title: "Tuna Achar Launch",
-    subtitle: "Product Launch & Go-to-Market",
-    description:
-      "Led the strategic launch of a specialty food product line — from market validation and packaging strategy to distribution partnerships and brand positioning in a competitive FMCG landscape.",
-    highlights: ["GTM strategy", "Brand positioning", "Distribution"],
-    tag: "Product Launch",
-  },
-  {
-    title: "Dr. VP Talks",
-    subtitle: "Media & Thought Leadership",
-    description:
-      "Built and scaled a thought leadership platform — developing content strategy, audience growth frameworks, and monetization pathways for a medical professional's personal brand.",
-    highlights: ["Content strategy", "Audience growth", "Brand building"],
-    tag: "Media Project",
-  },
 ];
 
 export const testimonials = [
